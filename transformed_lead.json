@@ -1,0 +1,30 @@
+{
+  "lead_id": "d07ac570-22dd-401f-b148-c5e44f0c17d5",
+  "contact_name": "Nirav Patel",
+  "job_title": "Full Stack Developer & Team Manager",
+  "company_name": "Upwork, Fiverr, PeoplePerHour ",
+  "company_size": "1-50 employees",
+  "industry": "Computer Software",
+  "email": null,
+  "phone": null,
+  "website": null,
+  "location": {
+    "city": "Surat, Gujarat",
+    "state": null,
+    "country": "India"
+  },
+  "source": "LinkedIn",
+  "lead_status": "New",
+  "interested_services": [
+    "Backend Development",
+    "Web Application Development",
+    "Database Management",
+    "Full-Stack Development"
+  ],
+  "estimated_budget": "$10,000 - $50,000",
+  "preferred_contact_method": "LinkedIn Message",
+  "notes": "Exciting Opportunity Alert! Big news\u2014I'm available for hire! I've worked with great tech like NextJs, Firebase, React, and various other libraries and APIs.",
+  "created_at": "2024-11-30T23:20:05.344652Z",
+  "last_contacted_at": null,
+  "next_follow_up_date": "2024-12-07T23:20:05.345407Z"
+}
