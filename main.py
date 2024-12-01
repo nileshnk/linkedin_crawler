@@ -1,11 +1,12 @@
+from dotenv import load_dotenv
 from linkedin_api import Linkedin
+load_dotenv()
 import json
 from collections import defaultdict
-from dotenv import load_dotenv
 import os
 from urllib.parse import urlparse
 from transformation import transform_linkedin_lead
-load_dotenv()
+from producer import ProduceData
 
 class ExtendedLinkedin(Linkedin):
     def getPost(self, entityUrn):
@@ -169,9 +170,6 @@ for keyword in keywords:
             # save_profile_data(actor_data)
             
             transformed_lead = transform_linkedin_lead(actor_data, text_content)
-
+            ProduceData("linkedin_leads",transformed_lead)
     except Exception as e:
         print(f"Error processing keyword {keyword}: {e}")
-
-
-

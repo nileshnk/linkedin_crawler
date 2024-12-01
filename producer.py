@@ -1,8 +1,14 @@
 from confluent_kafka import Producer
+from dotenv import load_dotenv
+load_dotenv()
+import os
 
 # Kafka producer configuration
+kafka_host = os.getenv("KAFKA_HOST")
+kafka_port = os.getenv("KAFKA_PORT")
+
 producer_config = {
-    'bootstrap.servers': 'localhost:9092'  # Kafka broker address
+    'bootstrap.servers': f'{kafka_host}:{kafka_port}'  # Kafka broker address
 }
 
 # Initialize the producer
@@ -16,9 +22,11 @@ def delivery_report(err, msg):
         print(f"Message delivered to {msg.topic()} [{msg.partition()}]")
 
 # Produce a message
-topic = 'test-topic'
-message = 'Hello Kafka!'
 producer.produce(topic, message, callback=delivery_report)
 
+def ProduceData(topic, message):
+    producer.produce(topic, message, callback=delivery_report)
+    
 # Wait for any outstanding messages to be delivered
-producer.flush()
+def Flush():
+    producer.flush()
