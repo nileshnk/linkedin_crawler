@@ -20,6 +20,12 @@ def transform_linkedin_lead(actor_data, post_content):
     # Extract job title and skills from headline
     job_title = actor_data.get('headline', 'Software Developer')
     
+    experience = actor_data.get('experience', [])
+    company_name = ""
+    if experience:
+        company_name = experience[0].get('companyName', 'Not Specified')
+    else:
+        company_name = 'No Experience Listed'
     # Extract skills
     skills = [skill.get('name', '').strip() for skill in actor_data.get('skills', [])]
     
@@ -46,7 +52,7 @@ def transform_linkedin_lead(actor_data, post_content):
         "lead_id": lead_id,
         "contact_name": f"{first_name} {last_name}".strip(),
         "job_title": job_title,
-        "company_name": actor_data.get('experience', [{}])[0].get('companyName', 'Not Specified'),
+        "company_name": company_name,
         "company_size": "1-50 employees",  # Default assumption for individual profile
         "industry": actor_data.get('industryName', 'Technology'),
         "email": None,  # LinkedIn data doesn't provide email
@@ -70,6 +76,8 @@ def transform_linkedin_lead(actor_data, post_content):
     
     return lead
 
+print("we are in transformation")
+print("******")
 # Example usage
 sample_linkedin_data = {
     "title": {"text": "Francesco Longo"},

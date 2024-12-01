@@ -4,7 +4,7 @@ from collections import defaultdict
 from dotenv import load_dotenv
 import os
 from urllib.parse import urlparse
-
+from transformation import transform_linkedin_lead
 load_dotenv()
 
 class ExtendedLinkedin(Linkedin):
@@ -118,7 +118,7 @@ def find_actor_identifier(post):
         print(f"Key error finding actor identifier: {e}")
         return None
 
-def search_posts(keyword, search_limit=50):
+def search_posts(keyword, search_limit=5):
     try:
         searchParams = defaultdict()
         searchParams["keywords"] = keyword
@@ -166,7 +166,9 @@ for keyword in keywords:
             actor_url = post['actorNavigationContext']['url']
             actor_data = process_linkedin_url(actor_url)
 
-            save_profile_data(actor_data)
+            # save_profile_data(actor_data)
+            
+            transformed_lead = transform_linkedin_lead(actor_data, text_content)
 
     except Exception as e:
         print(f"Error processing keyword {keyword}: {e}")
